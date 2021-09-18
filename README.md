@@ -31,7 +31,7 @@ training (60%) , validation (20%) and testing (20%), respectively.
   + `layers.py` : It includes the specific implementation of some layers in the model.
   + `main.py` : This is the entrance of the program, which is used to train model.
   + `models.py` : Including the whole part of the model
-  + `rawprocess.py` : This is our model
+  + `rawprocess.py` : This file contains some data preprocessing contents, such as the construction of local and global graphs
   + `utils.py` : Here are some common methods, including calculating metrics and drawing pictures.
 + `/data` : The original data or some preprocessed data required for the experiment are stored here
   + /shenzhen
