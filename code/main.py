@@ -289,7 +289,7 @@ def main(dataset, read_pkl, times, epochs, train_batch, valid_batch, test_batch,
     for idx, seed in enumerate(random.sample(range(0, 1000), times)):
 
         # Fixed random seed(random seed 555 can be used to reproduce the results of this paper)
-        # seed = 555
+        seed = 555
         np.random.seed(seed)
         torch.manual_seed(seed)
         torch.cuda.manual_seed(seed)

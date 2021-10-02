@@ -1,6 +1,6 @@
 # AttnTUL-master
 
-For AAAI 2022.
+For AAAI 2022-Submission
 
 The pytorch implementation version of the **AttnTUL**
 
@@ -11,11 +11,7 @@ Paper title: Trajectory-User Linking via Hierarchical Spatio-Temporal Attention 
 
 # Datasets
 
-We conducted extensive experiments on three different types of real trajectory data sets: [**Gowalla**](http://snap.stanford.edu/data/loc-gowalla.html) check-in dataset, [**Shenzhen**](https://github.com/HunanUniversityZhuXiao/PrivateCarTrajectoryData) private car dataset and [**Geolife**](https://www.microsoft.com/en-us/research/project/geolife-building-social-networks-using-human-location-history/) personal travel dataset. The **Shenzhen** data set is obtained from others according to the agreement, due to privacy issues, we public part of the **Shenzhen** processed data in an anonymous form. The preprocessed data is included in data/shenzhen/process/shenzhen-mini-120.pkl file.
-
-## Split Data
-
-training (60%) , validation (20%) and testing (20%), respectively.
+We conducted extensive experiments on three different types of real trajectory data sets: [**Gowalla**](http://snap.stanford.edu/data/loc-gowalla.html) check-in dataset, [**Shenzhen**](https://github.com/HunanUniversityZhuXiao/PrivateCarTrajectoryData) private car dataset and [**Geolife**](https://www.microsoft.com/en-us/research/project/geolife-building-social-networks-using-human-location-history/) personal travel dataset. The sample data to evaluate our model can be found in the data folder, which contains three different data sets and ready for directly used.
 
 
 # Usage:
@@ -35,10 +31,10 @@ training (60%) , validation (20%) and testing (20%), respectively.
   + `utils.py` : Here are some common methods, including calculating metrics and drawing pictures.
 + `/data` : The original data or some preprocessed data required for the experiment are stored here
   + /shenzhen
-    + /raw
-    + /process
+  + /gowalla
+  + /geolife
 + `/temp` : Here is the folder used to store checkpoints.
-+ `/log` : Here is the folder used to store pictures.
++ `/log` : Here is the folder used to store metric pictures.
 
 # Training and Evaluate
 
@@ -63,18 +59,19 @@ Here are some common optional parameter settings:
 --grid_size xxx
 ```
 
+You can reproduce the results in the paper by fixing a random seed of 555
+
 # Notice
 
 More details and ablation experiments version will be updated later
 
-The original code of baseline compared in this article is as follows:
+The source code of some important baselines compared in this paper are as follows:
 
 + [TULER](https://github.com/gcooq/TUL)
 + [TULVAE](https://github.com/AI-World/IJCAI-TULVAE)
 + [DeepTUL](https://github.com/CodyMiao/DeepTUL)
 + [DPLink](https://github.com/vonfeng/DPLink)
 
-For historical reasons, some of the above codes have some problems. We will also release the latest pytorch version for the convenience of later researchers! :)
 
 # Reference
 
