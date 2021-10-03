@@ -101,7 +101,7 @@ def get_dataset(test_nums, user_traj_train, user_traj_test):
     """
     valid_size = 0.5
     indices = list(range(test_nums))
-    np.random.seed(555)  # # Fixed random seed(random seed 555 can be used to reproduce the results of this paper)
+    np.random.seed(555)  # Fixed random seed
     np.random.shuffle(indices)
     split = int(np.floor(test_nums * valid_size))
     valid_idx, test_idx = indices[split:], indices[:split]
@@ -113,6 +113,7 @@ def get_dataset(test_nums, user_traj_train, user_traj_test):
 
 
 if __name__ == '__main__':
+    """ 
     from utils import load_data
     from datasets import get_dataloader
     device = torch.device(
@@ -129,3 +130,4 @@ if __name__ == '__main__':
         print(input_index)
         print(y_label)
         break
+     """

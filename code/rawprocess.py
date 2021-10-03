@@ -51,7 +51,7 @@ def conut_gird_num(tracks_data, grid_distance):
     right = haversine_distance(Lon2, Lat1, Lon2, Lat2)
     lon_grid_num = int((low + high) / 2 / grid_distance)
     lat_grid_num = int((left + right) / 2 / grid_distance)
-    print("After division, the whole map is:", lon_grid_num, '*',
+    logger.info("After division, the whole map is:", lon_grid_num, '*',
           lat_grid_num, '=', lon_grid_num * lat_grid_num, 'grids')
     return lon_grid_num, lat_grid_num, Lon1, Lat1, Lon2, Lat2
 
@@ -77,7 +77,7 @@ def grid_process(tracks_data, grid_distance):
     tracks_data['grid_ID'] = [grid_list.index(
         num) for num in tqdm(tracks_data['grid_ID'])]
     grid_list = sorted(set(tracks_data['grid_ID']))
-    print('After removing the invalid grid, there are', len(grid_list), 'grids')
+    logger.info('After removing the invalid grid, there are', len(grid_list), 'grids')
     return tracks_data, grid_list
 
 
@@ -217,7 +217,7 @@ def generate_graph(grid_list, traj_list, user_list, user_traj_dict, user_traj_tr
             sum_feature += global_feature[one_traj[0]]
         global_feature[len(traj_list)+key] = sum_feature
 
-    print('Waiting to build global graph:')
+    logger.info('Waiting to build global graph:')
     global_graph = nx.Graph()
     global_graph.add_nodes_from(
         traj_list + [len(traj_list)+idx for idx in user_list])

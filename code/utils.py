@@ -9,7 +9,7 @@ class EarlyStopping:
     """[Early stops the training if validation loss doesn't improve after a given patience.]
     """
 
-    def __init__(self, patience=7, verbose=False, delta=0):
+    def __init__(self, logger, patience=7, verbose=False, delta=0):
         """[Receive optional parameters]
 
         Args:
@@ -17,6 +17,7 @@ class EarlyStopping:
             verbose (bool, optional): [If True, prints a message for each validation loss improvement. ]. Defaults to False.
             delta (int, optional): [Minimum change in the monitored quantity to qualify as an improvement.]. Defaults to 0.
         """
+        self.logger = logger
         self.patience = patience
         self.verbose = verbose
         self.counter = 0
@@ -39,7 +40,7 @@ class EarlyStopping:
             self.save_checkpoint(val_loss, all_model)
         elif score < self.best_score + self.delta:
             self.counter += 1
-            print(
+            self.logger.info(
                 f'EarlyStopping counter: {self.counter} out of {self.patience}')
             if self.counter >= self.patience:
                 self.early_stop = True
@@ -56,8 +57,8 @@ class EarlyStopping:
             all_model ([list]): [Save the list of models corresponding to the best checkpoint]
         """
         if self.verbose:
-            print(
-                f'Validation loss decreased ({self.val_loss_min:.6f} --> {val_loss:.6f}).  Saving model ...')
+            self.logger.info(
+                f'Validation acc increased ({-self.val_loss_min:.6f} --> {-val_loss:.6f}).  Saving model ...')
         for idx, model in enumerate(all_model):
             # The parameters of the optimal model so far will be stored here
             torch.save(model.state_dict(), '../temp/checkpoint'+str(idx)+'.pt')
@@ -165,6 +166,7 @@ def loss_plot(train_loss, val_loss):
         train_loss ([list]): [Loss list of training sets]
         val_loss ([list]): [Loss list of Validation sets]
     """
+    plt.switch_backend('agg')
     plt.plot(range(len(train_loss)), train_loss, label='Train loss', linewidth=2,
              color='orange', marker='o', markerfacecolor='r', markersize=5)
     plt.plot(range(len(val_loss)), val_loss, label='Validation loss',
@@ -184,6 +186,7 @@ def loss_with_earlystop_plot(avg_train_losses, avg_valid_losses):
         val_loss ([list]): [Loss list of Validation sets]
     """
     # visualize the loss as the network trained
+    plt.switch_backend('agg')
     fig = plt.figure(figsize=(8, 4))
     plt.plot(range(1, len(avg_train_losses)+1),
              avg_train_losses, label='Training Loss')
@@ -216,6 +219,7 @@ def acc_plot(train_acc1, val_acc1, train_acc5, val_acc5):
         train_acc5 ([list]): [Training set acc@5 list]
         val_acc5 ([list]): [Validation set acc@5 list]
     """
+    plt.switch_backend('agg')
     plt.figure(figsize=(30, 10), dpi=80)
     plt.figure(1)
     ax1 = plt.subplot(1, 2, 1)
@@ -250,6 +254,7 @@ def macro_plot(train_macro_p, val_macro_p, train_macro_r, val_macro_r, train_mac
         train_macro_f1 ([list]): [Training set macro_f1 list]
         val_macro_f1 ([list]): [Validation set macro_f1 list]
     """
+    plt.switch_backend('agg')
     plt.figure(figsize=(45, 10), dpi=80)
     plt.figure(1)
     ax1 = plt.subplot(131)

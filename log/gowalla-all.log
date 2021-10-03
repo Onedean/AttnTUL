@@ -1,0 +1,206 @@
+The 0 round, start training with random seed 555
+Epoch: 0/80
+train_loss:1090.16138  acc1:0.0100  acc5:0.0404  Macro-P:0.0011  Macro-R:0.0090  Macro-F1:0.0009
+valid_loss:366.58395  acc1:0.0711  acc5:0.1801  Macro-P:0.0451  Macro-R:0.0366  Macro-F1:0.0279
+Validation acc increased (-inf --> 0.071094).  Saving model ...
+Epoch: 1/80
+train_loss:1059.87769  acc1:0.0795  acc5:0.1915  Macro-P:0.0529  Macro-R:0.0422  Macro-F1:0.0310
+valid_loss:355.31509  acc1:0.1414  acc5:0.2237  Macro-P:0.0762  Macro-R:0.0677  Macro-F1:0.0441
+Validation acc increased (0.071094 --> 0.141406).  Saving model ...
+Epoch: 2/80
+train_loss:1018.56085  acc1:0.1587  acc5:0.2659  Macro-P:0.0829  Macro-R:0.0798  Macro-F1:0.0560
+valid_loss:339.54214  acc1:0.1850  acc5:0.2759  Macro-P:0.0886  Macro-R:0.0904  Macro-F1:0.0678
+Validation acc increased (0.141406 --> 0.185045).  Saving model ...
+Epoch: 3/80
+train_loss:958.59418  acc1:0.2223  acc5:0.3230  Macro-P:0.1102  Macro-R:0.1098  Macro-F1:0.0887
+valid_loss:323.66736  acc1:0.2141  acc5:0.3469  Macro-P:0.0751  Macro-R:0.1102  Macro-F1:0.0763
+Validation acc increased (0.185045 --> 0.214062).  Saving model ...
+Epoch: 4/80
+train_loss:892.42480  acc1:0.2586  acc5:0.4294  Macro-P:0.1143  Macro-R:0.1313  Macro-F1:0.0991
+valid_loss:304.96860  acc1:0.2561  acc5:0.4204  Macro-P:0.1179  Macro-R:0.1380  Macro-F1:0.1000
+Validation acc increased (0.214062 --> 0.256138).  Saving model ...
+Epoch: 5/80
+train_loss:819.19690  acc1:0.3106  acc5:0.5084  Macro-P:0.1617  Macro-R:0.1719  Macro-F1:0.1364
+valid_loss:289.34094  acc1:0.3069  acc5:0.4806  Macro-P:0.1906  Macro-R:0.1850  Macro-F1:0.1482
+Validation acc increased (0.256138 --> 0.306920).  Saving model ...
+Epoch: 6/80
+train_loss:749.55182  acc1:0.3777  acc5:0.5970  Macro-P:0.2518  Macro-R:0.2301  Macro-F1:0.1951
+valid_loss:274.85370  acc1:0.3311  acc5:0.5152  Macro-P:0.1990  Macro-R:0.2050  Macro-F1:0.1687
+Validation acc increased (0.306920 --> 0.331138).  Saving model ...
+Epoch: 7/80
+train_loss:678.50555  acc1:0.4216  acc5:0.6552  Macro-P:0.2655  Macro-R:0.2636  Macro-F1:0.2230
+valid_loss:263.04239  acc1:0.3544  acc5:0.5400  Macro-P:0.2279  Macro-R:0.2223  Macro-F1:0.1873
+Validation acc increased (0.331138 --> 0.354353).  Saving model ...
+Epoch: 8/80
+train_loss:618.05804  acc1:0.4669  acc5:0.6897  Macro-P:0.3401  Macro-R:0.3059  Macro-F1:0.2713
+valid_loss:251.86176  acc1:0.3989  acc5:0.5661  Macro-P:0.3072  Macro-R:0.2716  Macro-F1:0.2500
+Validation acc increased (0.354353 --> 0.398884).  Saving model ...
+Epoch: 9/80
+train_loss:561.55505  acc1:0.5337  acc5:0.7233  Macro-P:0.3998  Macro-R:0.3703  Macro-F1:0.3447
+valid_loss:240.78052  acc1:0.4294  acc5:0.5855  Macro-P:0.3399  Macro-R:0.3058  Macro-F1:0.2849
+Validation acc increased (0.398884 --> 0.429353).  Saving model ...
+Epoch: 10/80
+train_loss:505.63193  acc1:0.5867  acc5:0.7460  Macro-P:0.4371  Macro-R:0.4354  Macro-F1:0.4116
+valid_loss:232.25034  acc1:0.4546  acc5:0.6003  Macro-P:0.3711  Macro-R:0.3296  Macro-F1:0.3063
+Validation acc increased (0.429353 --> 0.454576).  Saving model ...
+Epoch: 11/80
+train_loss:460.25577  acc1:0.6129  acc5:0.7662  Macro-P:0.4898  Macro-R:0.4700  Macro-F1:0.4473
+valid_loss:226.21999  acc1:0.4538  acc5:0.6165  Macro-P:0.4025  Macro-R:0.3442  Macro-F1:0.3254
+EarlyStopping counter: 1 out of 10
+Epoch: 12/80
+train_loss:417.16922  acc1:0.6339  acc5:0.7877  Macro-P:0.5291  Macro-R:0.5082  Macro-F1:0.4880
+valid_loss:220.56941  acc1:0.4603  acc5:0.6277  Macro-P:0.3962  Macro-R:0.3553  Macro-F1:0.3354
+Validation acc increased (0.454576 --> 0.460268).  Saving model ...
+Epoch: 13/80
+train_loss:381.60492  acc1:0.6476  acc5:0.8160  Macro-P:0.5525  Macro-R:0.5370  Macro-F1:0.5119
+valid_loss:217.15277  acc1:0.4746  acc5:0.6406  Macro-P:0.4012  Macro-R:0.3672  Macro-F1:0.3523
+Validation acc increased (0.460268 --> 0.474554).  Saving model ...
+Epoch: 14/80
+train_loss:346.28928  acc1:0.6751  acc5:0.8376  Macro-P:0.5940  Macro-R:0.5623  Macro-F1:0.5470
+valid_loss:214.85509  acc1:0.4772  acc5:0.6552  Macro-P:0.4066  Macro-R:0.3803  Macro-F1:0.3645
+Validation acc increased (0.474554 --> 0.477232).  Saving model ...
+Epoch: 15/80
+train_loss:314.75287  acc1:0.7010  acc5:0.8629  Macro-P:0.6632  Macro-R:0.6093  Macro-F1:0.5986
+valid_loss:213.83011  acc1:0.4864  acc5:0.6569  Macro-P:0.4379  Macro-R:0.3930  Macro-F1:0.3805
+Validation acc increased (0.477232 --> 0.486384).  Saving model ...
+Epoch: 16/80
+train_loss:285.20856  acc1:0.7220  acc5:0.8839  Macro-P:0.7024  Macro-R:0.6413  Macro-F1:0.6318
+valid_loss:213.68620  acc1:0.4952  acc5:0.6652  Macro-P:0.4569  Macro-R:0.4023  Macro-F1:0.3912
+Validation acc increased (0.486384 --> 0.495201).  Saving model ...
+Epoch: 17/80
+train_loss:261.47604  acc1:0.7416  acc5:0.8990  Macro-P:0.7348  Macro-R:0.6696  Macro-F1:0.6679
+valid_loss:214.22481  acc1:0.4946  acc5:0.6781  Macro-P:0.4687  Macro-R:0.4097  Macro-F1:0.4026
+EarlyStopping counter: 1 out of 10
+Epoch: 18/80
+train_loss:242.60263  acc1:0.7573  acc5:0.9135  Macro-P:0.7768  Macro-R:0.7056  Macro-F1:0.7082
+valid_loss:217.91621  acc1:0.4991  acc5:0.6871  Macro-P:0.4789  Macro-R:0.4196  Macro-F1:0.4107
+Validation acc increased (0.495201 --> 0.499107).  Saving model ...
+Epoch: 19/80
+train_loss:220.85919  acc1:0.7788  acc5:0.9213  Macro-P:0.7971  Macro-R:0.7394  Macro-F1:0.7446
+valid_loss:219.32658  acc1:0.5046  acc5:0.6871  Macro-P:0.4756  Macro-R:0.4288  Macro-F1:0.4180
+Validation acc increased (0.499107 --> 0.504576).  Saving model ...
+Epoch: 20/80
+train_loss:203.05771  acc1:0.7893  acc5:0.9329  Macro-P:0.8249  Macro-R:0.7525  Macro-F1:0.7578
+valid_loss:222.24152  acc1:0.5116  acc5:0.6882  Macro-P:0.4864  Macro-R:0.4293  Macro-F1:0.4233
+Validation acc increased (0.504576 --> 0.511607).  Saving model ...
+Epoch: 21/80
+train_loss:187.33563  acc1:0.8068  acc5:0.9375  Macro-P:0.8336  Macro-R:0.7721  Macro-F1:0.7824
+valid_loss:224.78996  acc1:0.5071  acc5:0.6878  Macro-P:0.4740  Macro-R:0.4317  Macro-F1:0.4262
+EarlyStopping counter: 1 out of 10
+Epoch: 22/80
+train_loss:174.36546  acc1:0.8235  acc5:0.9450  Macro-P:0.8543  Macro-R:0.7992  Macro-F1:0.8094
+valid_loss:228.57423  acc1:0.5085  acc5:0.6923  Macro-P:0.4891  Macro-R:0.4368  Macro-F1:0.4358
+EarlyStopping counter: 2 out of 10
+Epoch: 23/80
+train_loss:160.98882  acc1:0.8376  acc5:0.9507  Macro-P:0.8753  Macro-R:0.8194  Macro-F1:0.8334
+valid_loss:229.38840  acc1:0.5049  acc5:0.6895  Macro-P:0.4849  Macro-R:0.4418  Macro-F1:0.4403
+EarlyStopping counter: 3 out of 10
+Epoch: 24/80
+train_loss:149.79713  acc1:0.8421  acc5:0.9542  Macro-P:0.8734  Macro-R:0.8261  Macro-F1:0.8343
+valid_loss:234.42494  acc1:0.5067  acc5:0.6911  Macro-P:0.4940  Macro-R:0.4401  Macro-F1:0.4390
+EarlyStopping counter: 4 out of 10
+Epoch: 25/80
+train_loss:140.60973  acc1:0.8526  acc5:0.9588  Macro-P:0.8784  Macro-R:0.8381  Macro-F1:0.8477
+valid_loss:235.43904  acc1:0.5061  acc5:0.6970  Macro-P:0.4868  Macro-R:0.4388  Macro-F1:0.4365
+EarlyStopping counter: 5 out of 10
+Epoch: 26/80
+train_loss:129.22874  acc1:0.8618  acc5:0.9644  Macro-P:0.8922  Macro-R:0.8493  Macro-F1:0.8623
+valid_loss:236.67795  acc1:0.5129  acc5:0.6921  Macro-P:0.4975  Macro-R:0.4456  Macro-F1:0.4464
+Validation acc increased (0.511607 --> 0.512946).  Saving model ...
+Epoch: 27/80
+train_loss:119.91454  acc1:0.8723  acc5:0.9663  Macro-P:0.9007  Macro-R:0.8601  Macro-F1:0.8719
+valid_loss:238.44864  acc1:0.5165  acc5:0.6964  Macro-P:0.4994  Macro-R:0.4505  Macro-F1:0.4487
+Validation acc increased (0.512946 --> 0.516518).  Saving model ...
+Epoch: 28/80
+train_loss:111.11916  acc1:0.8763  acc5:0.9736  Macro-P:0.9016  Macro-R:0.8673  Macro-F1:0.8762
+valid_loss:240.24481  acc1:0.5145  acc5:0.6956  Macro-P:0.4945  Macro-R:0.4542  Macro-F1:0.4510
+EarlyStopping counter: 1 out of 10
+Epoch: 29/80
+train_loss:103.39713  acc1:0.8834  acc5:0.9741  Macro-P:0.9107  Macro-R:0.8740  Macro-F1:0.8859
+valid_loss:245.11241  acc1:0.5208  acc5:0.6954  Macro-P:0.5042  Macro-R:0.4578  Macro-F1:0.4571
+Validation acc increased (0.516518 --> 0.520759).  Saving model ...
+Epoch: 30/80
+train_loss:98.49454  acc1:0.8885  acc5:0.9758  Macro-P:0.9101  Macro-R:0.8840  Macro-F1:0.8926
+valid_loss:247.04614  acc1:0.5269  acc5:0.6972  Macro-P:0.5034  Macro-R:0.4595  Macro-F1:0.4591
+Validation acc increased (0.520759 --> 0.526897).  Saving model ...
+Epoch: 31/80
+train_loss:90.02518  acc1:0.8960  acc5:0.9803  Macro-P:0.9206  Macro-R:0.8892  Macro-F1:0.8988
+valid_loss:250.99144  acc1:0.5176  acc5:0.6962  Macro-P:0.5055  Macro-R:0.4555  Macro-F1:0.4577
+EarlyStopping counter: 1 out of 10
+Epoch: 32/80
+train_loss:84.52363  acc1:0.9065  acc5:0.9798  Macro-P:0.9232  Macro-R:0.9001  Macro-F1:0.9072
+valid_loss:255.24294  acc1:0.5079  acc5:0.6917  Macro-P:0.4929  Macro-R:0.4488  Macro-F1:0.4484
+EarlyStopping counter: 2 out of 10
+Epoch: 33/80
+train_loss:78.97309  acc1:0.9122  acc5:0.9828  Macro-P:0.9283  Macro-R:0.9086  Macro-F1:0.9142
+valid_loss:258.09601  acc1:0.5144  acc5:0.6951  Macro-P:0.4981  Macro-R:0.4492  Macro-F1:0.4502
+EarlyStopping counter: 3 out of 10
+Epoch: 34/80
+train_loss:77.21930  acc1:0.9108  acc5:0.9849  Macro-P:0.9308  Macro-R:0.9085  Macro-F1:0.9154
+valid_loss:258.96198  acc1:0.5240  acc5:0.6883  Macro-P:0.4949  Macro-R:0.4570  Macro-F1:0.4576
+EarlyStopping counter: 4 out of 10
+Epoch: 35/80
+train_loss:69.12939  acc1:0.9186  acc5:0.9868  Macro-P:0.9347  Macro-R:0.9140  Macro-F1:0.9201
+valid_loss:265.04260  acc1:0.5181  acc5:0.6873  Macro-P:0.5186  Macro-R:0.4593  Macro-F1:0.4610
+EarlyStopping counter: 5 out of 10
+Epoch: 36/80
+train_loss:65.57388  acc1:0.9278  acc5:0.9865  Macro-P:0.9487  Macro-R:0.9242  Macro-F1:0.9325
+valid_loss:270.15137  acc1:0.5246  acc5:0.6959  Macro-P:0.5246  Macro-R:0.4613  Macro-F1:0.4648
+EarlyStopping counter: 6 out of 10
+Epoch: 37/80
+train_loss:61.77984  acc1:0.9230  acc5:0.9903  Macro-P:0.9448  Macro-R:0.9240  Macro-F1:0.9305
+valid_loss:273.03748  acc1:0.5215  acc5:0.6962  Macro-P:0.5263  Macro-R:0.4608  Macro-F1:0.4639
+EarlyStopping counter: 7 out of 10
+Epoch: 38/80
+train_loss:56.96192  acc1:0.9324  acc5:0.9906  Macro-P:0.9475  Macro-R:0.9304  Macro-F1:0.9358
+valid_loss:276.84381  acc1:0.5223  acc5:0.6894  Macro-P:0.5148  Macro-R:0.4582  Macro-F1:0.4586
+EarlyStopping counter: 8 out of 10
+Epoch: 39/80
+train_loss:54.37895  acc1:0.9332  acc5:0.9914  Macro-P:0.9507  Macro-R:0.9307  Macro-F1:0.9368
+valid_loss:275.54758  acc1:0.5316  acc5:0.6883  Macro-P:0.5340  Macro-R:0.4714  Macro-F1:0.4727
+Validation acc increased (0.526897 --> 0.531585).  Saving model ...
+Epoch: 40/80
+train_loss:51.75886  acc1:0.9356  acc5:0.9922  Macro-P:0.9534  Macro-R:0.9334  Macro-F1:0.9393
+valid_loss:276.54214  acc1:0.5203  acc5:0.6883  Macro-P:0.5191  Macro-R:0.4598  Macro-F1:0.4629
+EarlyStopping counter: 1 out of 10
+Epoch: 41/80
+train_loss:48.16884  acc1:0.9375  acc5:0.9938  Macro-P:0.9582  Macro-R:0.9385  Macro-F1:0.9428
+valid_loss:280.14554  acc1:0.5235  acc5:0.6824  Macro-P:0.5272  Macro-R:0.4648  Macro-F1:0.4698
+EarlyStopping counter: 2 out of 10
+Epoch: 42/80
+train_loss:45.92792  acc1:0.9440  acc5:0.9952  Macro-P:0.9598  Macro-R:0.9420  Macro-F1:0.9467
+valid_loss:283.93781  acc1:0.5214  acc5:0.6816  Macro-P:0.5246  Macro-R:0.4613  Macro-F1:0.4649
+EarlyStopping counter: 3 out of 10
+Epoch: 43/80
+train_loss:42.19999  acc1:0.9502  acc5:0.9960  Macro-P:0.9641  Macro-R:0.9468  Macro-F1:0.9519
+valid_loss:290.65479  acc1:0.5191  acc5:0.6761  Macro-P:0.5209  Macro-R:0.4648  Macro-F1:0.4635
+EarlyStopping counter: 4 out of 10
+Epoch: 44/80
+train_loss:44.29667  acc1:0.9491  acc5:0.9965  Macro-P:0.9664  Macro-R:0.9480  Macro-F1:0.9530
+valid_loss:292.58304  acc1:0.5214  acc5:0.6792  Macro-P:0.5370  Macro-R:0.4648  Macro-F1:0.4711
+EarlyStopping counter: 5 out of 10
+Epoch: 45/80
+train_loss:38.35942  acc1:0.9542  acc5:0.9976  Macro-P:0.9682  Macro-R:0.9542  Macro-F1:0.9591
+valid_loss:297.49371  acc1:0.5189  acc5:0.6829  Macro-P:0.5369  Macro-R:0.4615  Macro-F1:0.4698
+EarlyStopping counter: 6 out of 10
+Epoch: 46/80
+train_loss:37.30923  acc1:0.9534  acc5:0.9976  Macro-P:0.9690  Macro-R:0.9534  Macro-F1:0.9593
+valid_loss:301.83624  acc1:0.5150  acc5:0.6847  Macro-P:0.5272  Macro-R:0.4538  Macro-F1:0.4603
+EarlyStopping counter: 7 out of 10
+Epoch: 47/80
+train_loss:33.21227  acc1:0.9609  acc5:0.9970  Macro-P:0.9723  Macro-R:0.9594  Macro-F1:0.9645
+valid_loss:307.00275  acc1:0.5177  acc5:0.6763  Macro-P:0.5196  Macro-R:0.4539  Macro-F1:0.4580
+EarlyStopping counter: 8 out of 10
+Epoch: 48/80
+train_loss:31.17269  acc1:0.9634  acc5:0.9970  Macro-P:0.9723  Macro-R:0.9622  Macro-F1:0.9657
+valid_loss:311.96637  acc1:0.5174  acc5:0.6708  Macro-P:0.5155  Macro-R:0.4600  Macro-F1:0.4623
+EarlyStopping counter: 9 out of 10
+Epoch: 49/80
+train_loss:29.46897  acc1:0.9636  acc5:0.9978  Macro-P:0.9735  Macro-R:0.9619  Macro-F1:0.9657
+valid_loss:313.94025  acc1:0.5238  acc5:0.6730  Macro-P:0.5211  Macro-R:0.4639  Macro-F1:0.4689
+EarlyStopping counter: 10 out of 10
+Early Stop!
+test_loss:287.29407  acc1:0.5241  acc5:0.6996  Macro-P:0.5440  Macro-R:0.4827  Macro-F1:0.4841
+Total time elapsed: 553.3252s
+Fininsh trainning in seed 555
+

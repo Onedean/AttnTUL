@@ -11,14 +11,15 @@ Paper title: Trajectory-User Linking via Hierarchical Spatio-Temporal Attention 
 
 # Datasets
 
-We conducted extensive experiments on three different types of real trajectory data sets: [**Gowalla**](http://snap.stanford.edu/data/loc-gowalla.html) check-in dataset, [**Shenzhen**](https://github.com/HunanUniversityZhuXiao/PrivateCarTrajectoryData) private car dataset and [**Geolife**](https://www.microsoft.com/en-us/research/project/geolife-building-social-networks-using-human-location-history/) personal travel dataset. The sample data to evaluate our model can be found in the data folder, which contains three different data sets and ready for directly used.
+We conducted extensive experiments on three different types of real trajectory data sets: [**Gowalla**](http://snap.stanford.edu/data/loc-gowalla.html) check-in dataset, [**Shenzhen**](https://github.com/HunanUniversityZhuXiao/PrivateCarTrajectoryData) private car dataset and [**Geolife**](https://www.microsoft.com/en-us/research/project/geolife-building-social-networks-using-human-location-history/) personal travel dataset. The processed data to evaluate our model can be found in the data folder, which contains three different data sets and ready for directly used.
 
 
 # Usage:
 
 ## Install dependencies
 > + python 3.7
-> + ```pip install -r requirements.txt```
+> + pytorch 1.7.0
+> + other: ```pip install -r requirements.txt```
 
 ## Project Structure
 
@@ -34,36 +35,51 @@ We conducted extensive experiments on three different types of real trajectory d
   + /gowalla
   + /geolife
 + `/temp` : Here is the folder used to store checkpoints.
-+ `/log` : Here is the folder used to store metric pictures.
++ `/log` : Here is the folder used to store training logs and metric pictures.
 
 # Training and Evaluate
 
 You can train and evaluate the model with the following command:
+
+shenzhe-mini:
 ```
 cd code
-python main.py
+python main.py --dataset shenzhen-mini --read_pkl True --grid_size 120 --d_model 128 --n_heads 5 --n_layers 3
 ```
+shenzhe-all:
+```
+cd code
+python main.py --dataset shenzhen-all --read_pkl True --grid_size 120 --d_model 128 --n_heads 5 --n_layers 2
+```
+gowalla-mini:
+```
+cd code
+python main.py --dataset gowalla-mini --read_pkl True --grid_size 40 --d_model 128 --n_heads 4 --n_layers 3
+```
+gowalla-all:
+```
+cd code
+python main.py --dataset gowalla-all --read_pkl True --grid_size 40 --d_model 128 --n_heads 5 --n_layers 2
+```
+
+Note that we have added some code so that you can see the log of the training process and results in the log file. Because we repeat ten experiments and take the average value, different random seeds are used in each experiment. Although the results may fluctuate slightly, this greatly ensures the authenticity of the results.
 
 Here are some common optional parameter settings:
 ```
---dataset xxx
---times xxx
---epochs xxx
---train_batch xxx
---patience xxx
---d_model xxx
---Attn_Strategy xxx
---Softmax_Strategy xxx
---state_use xxx
---time_use xxx
---grid_size xxx
+--dataset shenzhen-mini/shenzhen-all/gowalla-mini/gowalla-all/geolife-mini/geolife-all
+--read_pkl True/False
+--times 10
+--epochs 80
+--train_batch 16
+--d_model 32/64/128/256/512
+--head 2/3/4/5/6
+--grid_size 40/80/120/160/200
 ```
 
-You can reproduce the results in the paper by fixing a random seed of 555
+Note that in order to save the time of follow-up researchers, we store the processed data in the pkl file. You can use it directly by setting parameter read_pkl to True, or set it to False, and process the original data first (eg: gowalla).
+
 
 # Notice
-
-More details and ablation experiments version will be updated later
 
 The source code of some important baselines compared in this paper are as follows:
 

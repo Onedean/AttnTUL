@@ -1,6 +1,7 @@
 import warnings
 import time
 import random
+import logging
 import argparse
 import torch
 import torch.nn.functional as F
@@ -12,6 +13,28 @@ from models import MolNet, GcnNet
 from tqdm import tqdm
 
 
+def getLogger(dataset):
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
+    consoleHandler = logging.StreamHandler()
+    consoleHandler.setLevel(logging.INFO)
+
+    fileHandler = logging.FileHandler(filename='../log/'+dataset+'.log', mode='w')
+    consoleHandler.setLevel(logging.INFO)
+
+    consoleformatter = logging.Formatter("%(message)s")
+    fileformatter = logging.Formatter("%(message)s")
+
+    consoleHandler.setFormatter(consoleformatter)
+    fileHandler.setFormatter(fileformatter)
+
+    logger.addHandler(consoleHandler)
+    logger.addHandler(fileHandler)
+
+    return logger
+
+
 def parse_args():
     """ This is a function used to parse command line arguments
 
@@ -20,10 +43,10 @@ def parse_args():
     """
     parse = argparse.ArgumentParser(description='Moving Object Linking')
     parse.add_argument('--dataset', type=str,
-                       default="shenzhen-mini", help='Dataset for training')
+                       default="gowalla-all", help='Dataset for training')
     parse.add_argument('--read_pkl', type=bool, default=True,
                        help='Read preprocessed input')
-    parse.add_argument('--times', type=int, default=10,
+    parse.add_argument('--times', type=int, default=1,
                        help='times of repeat experiment')
     parse.add_argument('--epochs', type=int, default=80,
                        help='Number of epochs to train')
@@ -35,7 +58,10 @@ def parse_args():
                        help='Size of test batch')
     parse.add_argument('--patience', type=int, default=10,
                        help='Number of early stop patience')
-
+    
+    parse.add_argument('--grid_size', type=int,
+                       default=120, help='Size of grid')
+    
     parse.add_argument('--gcn_lr', type=float, default=1e-2,
                        help='Initial gcn learning rate')
     parse.add_argument('--weight_decay', type=float, default=5e-4,
@@ -44,7 +70,7 @@ def parse_args():
                        default=512, help='Number of local gcn hidden units')
     parse.add_argument('--globalGcn_hidden', type=int,
                        default=512, help='Number of global gcn hidden units')
-    parse.add_argument('--gcn_dropout', type=float, default=0.1,
+    parse.add_argument('--gcn_dropout', type=float, default=0.5,
                        help='Dropout rate (1 - keep probability)')
 
     parse.add_argument('--Attn_Strategy', type=str,
@@ -56,13 +82,10 @@ def parse_args():
 
     parse.add_argument('--merge_use', type=bool, default=True,
                        help='Merge same adjacent edges or not')
-    parse.add_argument('--state_use', type=bool, default=False,
+    parse.add_argument('--state_use', type=bool, default=True,
                        help='Fusion state information or not')
     parse.add_argument('--time_use', type=bool, default=True,
                        help='Fusion time information or not')
-
-    parse.add_argument('--grid_size', type=int,
-                       default=120, help='Size of grid')
 
     parse.add_argument('--d_model', type=int, default=128,
                        help='Number of point vector dim')
@@ -76,7 +99,7 @@ def parse_args():
                        help='Number of Feed forward transform dim')
     parse.add_argument('--n_heads', type=int, default=5,
                        help='Number of heads')
-    parse.add_argument('--n_layers', type=int, default=3,
+    parse.add_argument('--n_layers', type=int, default=2,
                        help='Number of EncoderLayer')
 
     args = parse.parse_args()
@@ -108,7 +131,7 @@ def train_model(epochs, patience, train_dataset, train_batch, test_dataset, vali
     """
     avg_train_losses = []
     avg_valid_losses = []
-    early_stopping = EarlyStopping(patience=patience, verbose=True)
+    early_stopping = EarlyStopping(logger=logger, patience=patience, verbose=True)
 
     for epoch in range(epochs):
 
@@ -147,8 +170,8 @@ def train_model(epochs, patience, train_dataset, train_batch, test_dataset, vali
         optimizer_globalgcn.step()
         optimizer_mol.step()
 
-        print('Epoch: {}/{}'.format(epoch, epochs))
-        print('train_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
+        logger.info('Epoch: {}/{}'.format(epoch, epochs))
+        logger.info('train_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
             loss_train_sum, np.mean(acc1_list), np.mean(acc5_list), p, r, f1))
 
         loss_valid, y_predict_list, y_true_list, acc1_list, acc5_list = 0, [], [], [], []
@@ -178,7 +201,7 @@ def train_model(epochs, patience, train_dataset, train_batch, test_dataset, vali
         p = precision_score(y_true_list, y_predict_list, average='macro')
         r = recall_score(y_true_list, y_predict_list, average='macro')
         f1 = f1_score(y_true_list, y_predict_list, average='macro')
-        print('valid_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
+        logger.info('valid_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
             loss_valid_sum, np.mean(acc1_list), np.mean(acc5_list), p, r, f1))
 
         avg_train_losses.append(loss_train_sum)
@@ -189,7 +212,7 @@ def train_model(epochs, patience, train_dataset, train_batch, test_dataset, vali
                        (LocalGcnModel, GlobalGcnModel, MolModel))
 
         if early_stopping.early_stop:
-            print('Early Stop!')
+            logger.info('Early Stop!')
             break
 
     return avg_train_losses, avg_valid_losses
@@ -239,11 +262,11 @@ def test_model(test_dataset, test_batch, test_sampler, LocalGcnModel, GlobalGcnM
     p = precision_score(y_true_list, y_predict_list, average='macro')
     r = recall_score(y_true_list, y_predict_list, average='macro')
     f1 = f1_score(y_true_list, y_predict_list, average='macro')
-    print('test_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
+    logger.info('test_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
         loss_test_sum, np.mean(acc1_list), np.mean(acc5_list), p, r, f1))
 
 
-def main(dataset, read_pkl, times, epochs, train_batch, valid_batch, test_batch, patience, gcn_lr, weight_decay, localGcn_hidden, globalGcn_hidden, gcn_dropout, encode_lr, d_model, d_k, d_v, d_ff, n_heads, n_layers, Attn_Strategy, Softmax_Strategy, Pool_Strategy, merge_use, state_use, time_use, grid_size):
+def main(logger, dataset, read_pkl, times, epochs, train_batch, valid_batch, test_batch, patience, gcn_lr, weight_decay, localGcn_hidden, globalGcn_hidden, gcn_dropout, encode_lr, d_model, d_k, d_v, d_ff, n_heads, n_layers, Attn_Strategy, Softmax_Strategy, Pool_Strategy, merge_use, state_use, time_use, grid_size):
     """[This is the entry function for the experiment]
 
     Args:
@@ -288,7 +311,7 @@ def main(dataset, read_pkl, times, epochs, train_batch, valid_batch, test_batch,
 
     for idx, seed in enumerate(random.sample(range(0, 1000), times)):
 
-        # Fixed random seed(random seed 555 can be used to reproduce the results of this paper)
+        # Fixed random seed
         seed = 555
         np.random.seed(seed)
         torch.manual_seed(seed)
@@ -310,7 +333,7 @@ def main(dataset, read_pkl, times, epochs, train_batch, valid_batch, test_batch,
         optimizer_mol = torch.optim.Adam(MolModel.parameters(), lr=encode_lr)
 
         # Train model
-        print('The {} round, start training with random seed {}'.format(idx, seed))
+        logger.info('The {} round, start training with random seed {}'.format(idx, seed))
         t_total = time.time()
 
         avg_train_losses, avg_valid_losses = train_model(epochs, patience, train_dataset, train_batch, test_dataset, valid_batch, valid_sampler, LocalGcnModel,
@@ -325,15 +348,17 @@ def main(dataset, read_pkl, times, epochs, train_batch, valid_batch, test_batch,
         test_model(test_dataset, test_batch, test_sampler, LocalGcnModel, GlobalGcnModel,
                    MolModel, local_feature, local_adj, global_feature, global_adj, device)
 
-        print(f"Total time elapsed: {time.time() - t_total:.4f}s")
-        print('Fininsh trainning in seed {}\n'.format(seed))
+        logger.info(f"Total time elapsed: {time.time() - t_total:.4f}s")
+        logger.info('Fininsh trainning in seed {}\n'.format(seed))
 
 
 if __name__ == '__main__':
     warnings.filterwarnings("ignore")
     args = parse_args()
-    main(dataset=args.dataset, read_pkl=args.read_pkl, times=args.times, epochs=args.epochs, train_batch=args.train_batch, valid_batch=args.valid_batch,
-         test_batch=args.test_batch, patience=args.patience, gcn_lr=args.gcn_lr, weight_decay=args.weight_decay, localGcn_hidden=args.localGcn_hidden,
-         globalGcn_hidden=args.globalGcn_hidden, gcn_dropout=args.gcn_dropout, encode_lr=args.encode_lr, d_model=args.d_model, d_k=args.d_k, d_v=args.d_v,
-         d_ff=args.d_ff, n_heads=args.n_heads, n_layers=args.n_layers, Attn_Strategy=args.Attn_Strategy, Softmax_Strategy=args.Softmax_Strategy,
-         Pool_Strategy=args.Pool_Strategy, merge_use=args.merge_use, state_use=args.state_use, time_use=args.time_use, grid_size=args.grid_size)
+    logger = getLogger(args.dataset)
+    main(logger = logger, dataset=args.dataset, read_pkl=args.read_pkl, times=args.times, epochs=args.epochs, train_batch=args.train_batch,
+         valid_batch=args.valid_batch, test_batch=args.test_batch, patience=args.patience, gcn_lr=args.gcn_lr, weight_decay=args.weight_decay,
+         localGcn_hidden=args.localGcn_hidden, globalGcn_hidden=args.globalGcn_hidden, gcn_dropout=args.gcn_dropout, encode_lr=args.encode_lr,
+         d_model=args.d_model, d_k=args.d_k, d_v=args.d_v, d_ff=args.d_ff, n_heads=args.n_heads, n_layers=args.n_layers, Attn_Strategy=args.Attn_Strategy,
+         Softmax_Strategy=args.Softmax_Strategy, Pool_Strategy=args.Pool_Strategy, merge_use=args.merge_use, state_use=args.state_use,
+         time_use=args.time_use, grid_size=args.grid_size)
