@@ -339,7 +339,7 @@ def main(logger, dataset, read_pkl, times, epochs, train_batch, valid_batch, tes
         avg_train_losses, avg_valid_losses = train_model(epochs, patience, train_dataset, train_batch, test_dataset, valid_batch, valid_sampler, LocalGcnModel,
                                                          GlobalGcnModel, MolModel, optimizer_localgcn, optimizer_globalgcn, optimizer_mol, local_feature, local_adj, global_feature, global_adj, device)
 
-        loss_with_earlystop_plot(avg_train_losses, avg_valid_losses)
+        # loss_with_earlystop_plot(avg_train_losses, avg_valid_losses)
 
         LocalGcnModel.load_state_dict(torch.load('../temp/checkpoint0.pt'))
         GlobalGcnModel.load_state_dict(torch.load('../temp/checkpoint1.pt'))
