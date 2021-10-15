@@ -6,10 +6,10 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 
 class MolDataset(Dataset):
-    """[summary]
+    """[A child class that extends an abstract class, used to change the input data]
 
     Args:
-        Dataset ([type]): [description]
+        Dataset ([class]): [An abstract class representing]
     """
 
     def __init__(self, data):
@@ -44,7 +44,7 @@ class MolDataset(Dataset):
 
 
 def collate_fn(batch):
-    """[summary]
+    """[Redefine collate_fn function]
 
     Args:
         batch ([type]): [description]
@@ -68,10 +68,10 @@ def collate_fn(batch):
 
 
 def get_dataloader(train, dataset, batch_size, sampler=None):
-    """[summary]
+    """[get data loader]
 
     Args:
-        train ([type]): [description]
+        train ([type]): [get train dataloader or not]
         dataset ([type]): [description]
         batch_size ([type]): [description]
         sampler ([type], optional): [description]. Defaults to None.
@@ -89,12 +89,12 @@ def get_dataloader(train, dataset, batch_size, sampler=None):
 
 
 def get_dataset(test_nums, user_traj_train, user_traj_test):
-    """[summary]
+    """[get dataset]
 
     Args:
-        test_nums ([type]): [description]
-        user_traj_train ([type]): [description]
-        user_traj_test ([type]): [description]
+        test_nums ([type]): [the number of test set]
+        user_traj_train ([type]): [Trajectory of training set]
+        user_traj_test ([type]): [Trajectory of test set]
 
     Returns:
         [type]: [description]

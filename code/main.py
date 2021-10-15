@@ -14,6 +14,11 @@ from tqdm import tqdm
 
 
 def getLogger(dataset):
+    """[Define logging functions]
+
+    Args:
+        dataset ([string]): [dataset name]
+    """
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
 
@@ -36,7 +41,7 @@ def getLogger(dataset):
 
 
 def parse_args():
-    """ This is a function used to parse command line arguments
+    """[This is a function used to parse command line arguments]
 
     Returns:
         args ([object]): [Parse parameter object to get parse object]
@@ -217,7 +222,7 @@ def train_model(epochs, patience, train_dataset, train_batch, test_dataset, vali
 
 
 def test_model(test_dataset, test_batch, test_sampler, LocalGcnModel, GlobalGcnModel, MolModel, local_feature, local_adj, global_feature, global_adj, device):
-    """[summary]
+    """[This is the test function used after one epoch of training]
     
     Args:
         test_dataset ([obejct]): [test datset]

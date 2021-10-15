@@ -62,7 +62,7 @@ cd code
 python main.py --dataset gowalla-all --read_pkl False --grid_size 40 --d_model 128 --n_heads 5 --n_layers 2
 ```
 
-Note that we have added some code so that you can see the log of the training process and results in the log file. We repeat 10 experiments and take the average value, different random seeds are used in each experiment. Although the results may fluctuate slightly, this greatly ensures the authenticity of the results.
+Note that we have added some code so that you can see the log of the training process and results in the log file. We repeat 10 experiments and take the average value, different random seeds are used in each experiment. Therefore, the average results may fluctuate slightly.
 
 Here are some common optional parameter settings:
 ```
