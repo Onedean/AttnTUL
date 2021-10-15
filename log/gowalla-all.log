@@ -153,3 +153,4 @@ Early Stop!
 test_loss:287.29407  acc1:0.5241  acc5:0.6996  Macro-P:0.5440  Macro-R:0.4827  Macro-F1:0.4841
 Total time elapsed: 553.3252s
 Fininsh trainning in seed 555
+
