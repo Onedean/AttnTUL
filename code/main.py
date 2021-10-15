@@ -171,8 +171,6 @@ def train_model(epochs, patience, train_dataset, train_batch, test_dataset, vali
         optimizer_mol.step()
 
         logger.info('Epoch: {}/{}'.format(epoch, epochs))
-        logger.info('train_loss:{:.5f}  acc1:{:.4f}  acc5:{:.4f}  Macro-P:{:.4f}  Macro-R:{:.4f}  Macro-F1:{:.4f}'.format(
-            loss_train_sum, np.mean(acc1_list), np.mean(acc5_list), p, r, f1))
 
         loss_valid, y_predict_list, y_true_list, acc1_list, acc5_list = 0, [], [], [], []
         LocalGcnModel.eval()
