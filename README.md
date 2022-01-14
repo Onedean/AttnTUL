@@ -1,10 +1,10 @@
 # AttnTUL-master
 
-For AAAI 2022-Submission
+For IJCAI 2022-Submission
 
 The pytorch implementation version of the **AttnTUL**
 
-Paper ID : 5686
+Paper ID : 4162
 
 Paper title: Trajectory-User Linking via Hierarchical Spatio-Temporal Attention Networks
 
