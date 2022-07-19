@@ -1,10 +1,9 @@
 # AttnTUL-master
 
-For ICDE 2023-Submission
+For TKDD Submission
 
 The pytorch implementation version of the **AttnTUL**
 
-Paper ID : 126
 
 Paper title: Trajectory-User Linking via Hierarchical Spatio-Temporal Attention Networks
 
