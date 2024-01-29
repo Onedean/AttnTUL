@@ -1,12 +1,9 @@
 # AttnTUL-master
 
-For TKDD Submission
-
 The pytorch implementation version of the **AttnTUL**
 
-
 Paper title: Trajectory-User Linking via Hierarchical Spatio-Temporal Attention Networks
-
+It was accepted to ACM Transactions on Knowledge Discovery from Data (TKDD).
 
 # Datasets
 
@@ -86,6 +83,21 @@ The source code of some important baselines compared in this paper are as follow
 + [TULVAE](https://github.com/AI-World/IJCAI-TULVAE)
 + [DeepTUL](https://github.com/CodyMiao/DeepTUL)
 + [DPLink](https://github.com/vonfeng/DPLink)
+
+
+## Citation
+
+If you want to use our codes in your research, please cite:
+
+```
+@article{xiao2023traceable,
+  title={Trajectory-User Linking via Hierarchical Spatio-Temporal Attention Networks},
+  author={Wei Chen, Chao Huang, Yanwei Yu, Yongguo Jiang, Junyu Dong},
+  journal={ACM Transactions on Knowledge Discovery from Data},
+  year={2023},
+  publisher={ACM New York, NY}
+}
+```
 
 
 # Reference
