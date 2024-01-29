@@ -3,6 +3,7 @@
 The pytorch implementation version of the **AttnTUL**
 
 Paper title: Trajectory-User Linking via Hierarchical Spatio-Temporal Attention Networks
+
 It was accepted to ACM Transactions on Knowledge Discovery from Data (TKDD).
 
 # Datasets
@@ -90,7 +91,7 @@ The source code of some important baselines compared in this paper are as follow
 If you want to use our codes in your research, please cite:
 
 ```
-@article{xiao2023traceable,
+@article{chen2023tul,
   title={Trajectory-User Linking via Hierarchical Spatio-Temporal Attention Networks},
   author={Wei Chen, Chao Huang, Yanwei Yu, Yongguo Jiang, Junyu Dong},
   journal={ACM Transactions on Knowledge Discovery from Data},
